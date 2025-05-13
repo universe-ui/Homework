@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.dashboard.PurchaseActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/goodlook"
+                android:layout_width="168dp"
+                android:layout_height="168dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:clipToOutline="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/goodname"
+                android:layout_width="184dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="33dp"
+                android:layout_marginEnd="16dp"
+                android:text="TextView"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/goodlook"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/goodprice"
+                android:layout_width="91dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="104dp"
+                android:text="TextView"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/goodlook"
+                app:layout_constraintTop_toBottomOf="@+id/size"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/size"
+                android:layout_width="72dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="16dp"
+                android:text="尺码：45"
+                android:textStyle="italic"
+                app:layout_constraintStart_toEndOf="@+id/goodlook"
+                app:layout_constraintTop_toBottomOf="@+id/goodname" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="收货地址："
+        android:textSize="16sp"
+        android:textColor="#999999"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/inputaddr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/inputaddr" />
+
+    <EditText
+        android:id="@+id/inputaddr"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="  Input your shipping address."
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/address"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ExtraText" />
+
+    <TextView
+        android:id="@+id/num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="24dp"
+        android:text="数量："
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/payway"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/payway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="85dp"
+        android:text="支付方式"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address"
+        tools:ignore="MissingConstraints" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="299dp"
+        android:layout_height="241dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/payway">
+
+        <RadioButton
+            android:id="@+id/pay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/yinhang"
+            android:drawablePadding="16dp"
+            android:text="中国银行数字人民币钱包"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/pay2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/alipay"
+            android:drawablePadding="16dp"
+            android:text="支付宝支付"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/pay3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/wx"
+            android:drawablePadding="16dp"
+            android:text="微信支付"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/pay4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/nonghang"
+            android:drawablePadding="16dp"
+            android:text="农行支付"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/pay5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/yipay"
+            android:drawablePadding="16dp"
+            android:text="翼支付"
+            android:textSize="16sp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/pay"
+        android:layout_width="343dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="支付"
+        android:onClick="fuqian"
+        android:shadowColor="#333333"
+        android:shadowRadius="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <ImageButton
+        android:id="@+id/sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="131dp"
+        android:onClick="counts"
+        app:layout_constraintBottom_toBottomOf="@+id/num"
+        app:layout_constraintStart_toEndOf="@+id/num"
+        app:layout_constraintTop_toTopOf="@+id/num"
+        app:srcCompat="@drawable/sub" />
+
+    <ImageButton
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:onClick="counts"
+        app:layout_constraintBottom_toBottomOf="@+id/num"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/num"
+        app:srcCompat="@drawable/add" />
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="39dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="42dp"
+        android:gravity="center"
+        android:text="1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toStartOf="@+id/add"
+        app:layout_constraintStart_toEndOf="@+id/sub" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

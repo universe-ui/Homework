@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
         Thread t = new Thread(()->{
             try {
                 Message msg = handler.obtainMessage(0);
-                Thread.sleep(500);
+                Thread.sleep(100);
                 Document doc = Jsoup.connect("https://m.hupu.com/nba/schedule").get();
                 Elements sections = doc.getElementsByTag("section");
                 ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
@@ -85,7 +85,6 @@ public class HomeFragment extends Fragment {
                         list.add(map);
                     }
                 }
-                Log.i(TAG, "onCreateView: 4444444444444444444444444444444");
                 msg.obj = list;
                 handler.sendMessage(msg);
             }

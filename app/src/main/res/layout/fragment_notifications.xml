@@ -6,17 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".ui.notifications.NotificationsFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+    <ImageView
+        android:id="@+id/kyrie"
+        android:layout_width="427dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/kyrie"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/kyrie">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:gravity="center"
+            android:text="绿军时期的欧文"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/Honors"
+        android:layout_width="92dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="72dp"
+        android:text="Honors"
+        app:chipBackgroundColor="@color/red"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/kyrie"
+        app:layout_constraintTop_toTopOf="@+id/kyrie" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/Dribbling"
+        android:layout_width="101dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginEnd="60dp"
+        android:gravity="center"
+        android:text="Dribbling"
+        app:chipBackgroundColor="@color/red"
+        app:layout_constraintEnd_toEndOf="@+id/kyrie"
+        app:layout_constraintTop_toTopOf="@+id/kyrie" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/Core_strength"
+        android:layout_width="119dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="424dp"
+        android:gravity="center"
+        android:text="Core strength"
+        app:chipBackgroundColor="@color/red"
+        app:layout_constraintStart_toStartOf="@+id/kyrie"
+        app:layout_constraintTop_toTopOf="@+id/kyrie" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/Signed_sneakers"
+        android:layout_width="142dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="664dp"
+        android:gravity="center"
+        android:text="Signed sneakers"
+        app:chipBackgroundColor="@color/red"
+        app:layout_constraintStart_toStartOf="@+id/kyrie"
+        app:layout_constraintTop_toTopOf="@+id/kyrie" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
