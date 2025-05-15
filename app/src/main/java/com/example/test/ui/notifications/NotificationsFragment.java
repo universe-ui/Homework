@@ -35,7 +35,7 @@ public class NotificationsFragment extends Fragment {
         Honors.setOnClickListener(v -> model(1,requireContext()));
         Dribbling.setOnClickListener(v -> model(2,requireContext()));
         Signed_sneakers.setOnClickListener(v -> model(3,requireContext()));
-        Toast.makeText(requireContext(),"尝试点击页面不同部分",Toast.LENGTH_LONG).show();
+        Toast.makeText(requireContext(),"尝试点击页面不同部分",Toast.LENGTH_SHORT).show();
         return root;
     }
 
