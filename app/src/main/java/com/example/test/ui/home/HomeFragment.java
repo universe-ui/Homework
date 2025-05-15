@@ -1,15 +1,17 @@
 package com.example.test.ui.home;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.test.R;
 import com.example.test.databinding.FragmentHomeBinding;
+import com.example.test.ui.dashboard.PurchaseActivity;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,8 +30,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment{
 
+    ListView schedule;
+    MyAdapter adapter;
     private FragmentHomeBinding binding;
     private ProgressBar progressBar;
     private static final String TAG = "HomeFragment";
@@ -41,13 +46,35 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        ListView schedule = binding.schedule;
+        schedule = binding.schedule;
+        schedule.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                builder.setTitle("提醒");
+                builder.setMessage("您要隐藏该比赛记录吗？");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapter.remove(schedule.getItemAtPosition(position));
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
+                return false;
+            }
+        });
         progressBar = binding.progressBar;
         Handler handler = new Handler(){
             public void handleMessage(Message msg){
                 if (msg.what==0){
                     ArrayList<HashMap<String,String>> list = (ArrayList<HashMap<String,String>>) msg.obj;
-                    MyAdapter adapter = new MyAdapter(requireContext(),R.layout.list_item,list);
+                    adapter = new MyAdapter(requireContext(),R.layout.list_item,list);
                     schedule.setAdapter(adapter);
                     progressBar.setVisibility(View.GONE);
                 }
@@ -105,4 +132,5 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 }
