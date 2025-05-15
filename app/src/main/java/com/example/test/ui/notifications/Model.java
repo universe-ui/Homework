@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -83,5 +84,6 @@ public class Model extends AppCompatActivity {
         }
         CardAdapter adapter = new CardAdapter(this,R.layout.cards_item,list);
         recyclerView.setAdapter(adapter);
+        Toast.makeText(this, "滑动右下方动图", Toast.LENGTH_SHORT).show();
     }
 }
