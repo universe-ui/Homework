@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ import java.util.HashMap;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    private ProgressBar progressBar;
     private static final String TAG = "HomeFragment";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -39,15 +41,15 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         ListView schedule = binding.schedule;
+        progressBar = binding.progressBar;
         Handler handler = new Handler(){
             public void handleMessage(Message msg){
                 if (msg.what==0){
                     ArrayList<HashMap<String,String>> list = (ArrayList<HashMap<String,String>>) msg.obj;
                     MyAdapter adapter = new MyAdapter(requireContext(),R.layout.list_item,list);
                     schedule.setAdapter(adapter);
+                    progressBar.setVisibility(View.GONE);
                 }
                 super.handleMessage(msg);
             }
