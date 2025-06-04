@@ -68,30 +68,15 @@ public class DashboardFragment extends Fragment implements SneakerAdapter.OnItem
     @Override
     public void onItemClick(int position) {  //设置点击事件
         HashMap<String,Integer> map = list.get(position);
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Purchase Tips");
-        builder.setMessage("Are you sure to purchase "+getString(map.get("sneakername"))+"?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                int sneakername = map.get("sneakername");
-                int price = map.get("price");
-                int lookingurl = map.get("lookingurl");
-                Intent purchase = new Intent(requireContext(),PurchaseActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt("sneakername",sneakername);
-                bundle.putInt("price",price);
-                bundle.putInt("lookingurl",lookingurl);
-                purchase.putExtras(bundle);
-                startActivityForResult(purchase,6666);
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.show();
+        int sneakername = map.get("sneakername");
+        int price = map.get("price");
+        int lookingurl = map.get("lookingurl");
+        Intent purchase = new Intent(requireContext(),PurchaseActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("sneakername",sneakername);
+        bundle.putInt("price",price);
+        bundle.putInt("lookingurl",lookingurl);
+        purchase.putExtras(bundle);
+        startActivityForResult(purchase,6666);
     }
 }

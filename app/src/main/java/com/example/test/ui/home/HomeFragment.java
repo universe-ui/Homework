@@ -19,7 +19,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.test.R;
 import com.example.test.databinding.FragmentHomeBinding;
-import com.example.test.ui.dashboard.PurchaseActivity;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

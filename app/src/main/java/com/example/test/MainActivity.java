@@ -4,6 +4,7 @@ import android.net.wifi.aware.PublishConfig;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.test.ui.dashboard.DashboardFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-
     }
-
 
 }

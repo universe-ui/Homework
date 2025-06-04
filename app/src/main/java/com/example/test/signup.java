@@ -42,20 +42,27 @@ public class signup extends AppCompatActivity {
     public void test(View view){
         String input = accountu.getText().toString();
         String signpas = passwordu.getText().toString();
-        if (isValidNumber(input) && signpas!="") {
-            int signacc = Integer.parseInt(input);
-            PassItem item = new PassItem(input,signpas);
-            PassManager passManager = new PassManager(this);
-            passManager.add(item);
-            Toast.makeText(this,"注册成功",Toast.LENGTH_SHORT).show();
-            finish();
+        PassManager passManager = new PassManager(this);
+        if (isValidNumber(input) && isSixDigits(signpas)) {
+            if (passManager.isAccountExists(input)){
+                Toast.makeText(this,"该账号已存在！",Toast.LENGTH_SHORT).show();
+            }
+            else{
+                int signacc = Integer.parseInt(input);
+                PassItem item = new PassItem(input,signpas);
+                passManager.add(item);
+                Toast.makeText(this,"注册成功",Toast.LENGTH_SHORT).show();
+                finish();
+            }
         } else {
-            Toast.makeText(this,"账号仅由数字构成且密码不能为空",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"账号仅由数字构成且密码为6位数字",Toast.LENGTH_SHORT).show();
         }
     }
-
-
     private boolean isValidNumber(String input) {
         return !TextUtils.isEmpty(input) && NUMBER_PATTERN.matcher(input).matches();
+    }
+    public static boolean isSixDigits(String signpas) {
+        // 要保证 signpas 不为 null，防止出现 NullPointerException
+        return signpas != null && signpas.matches("^\\d{6}$");
     }
 }

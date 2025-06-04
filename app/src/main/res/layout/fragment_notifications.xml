@@ -7,68 +7,146 @@
     android:background="@drawable/ki"
     tools:context=".ui.notifications.NotificationsFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3333" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E0F7FA"
+        android:padding="16dp">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6666" />
+        <!-- 左侧功能按钮区域 -->
+        <LinearLayout
+            android:id="@+id/leftPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:background="#FFFFFF"
+            android:elevation="8dp"
+            android:backgroundTint="#FFFFFF"
+            android:backgroundTintMode="multiply">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3333" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="关于KI"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:padding="5dp"
+                android:gravity="center"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.6666" />
+            <ImageButton
+                android:id="@+id/Honors"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/one"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="荣誉"
+                android:layout_marginBottom="15dp"
+                android:scaleType="fitCenter"/>
 
-    <ImageButton
-        android:id="@+id/Honors"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:onClick="model"
-        android:src="@drawable/none"
-        app:layout_constraintBottom_toTopOf="@+id/guideline1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ImageButton
+                android:id="@+id/Dribbling"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/dribble2"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="运球"
+                android:layout_marginBottom="15dp"
+                android:scaleType="fitCenter"/>
 
-    <ImageButton
-        android:id="@+id/Dribbling"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:onClick="model"
-        android:src="@drawable/none"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+            <ImageButton
+                android:id="@+id/SignedSneakers"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/honor2"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="签名鞋"
+                android:scaleType="fitCenter"/>
+        </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/Signed_sneakers"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:onClick="model"
-        android:src="@drawable/none"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline1" />
+        <!-- 分数显示区域 -->
+        <LinearLayout
+            android:id="@+id/scorePanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="#4FC3F7"
+            android:layout_marginBottom="20dp"
+            android:elevation="4dp">
+
+            <TextView
+                android:id="@+id/scoreText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="得分: 0"
+                android:textSize="24sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/shotsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="投篮: 0"
+                android:textSize="24sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- 篮筐 -->
+        <ImageView
+            android:id="@+id/hoop"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/hoop"
+            android:elevation="2dp"/>
+
+        <!-- 篮球 -->
+        <ImageView
+            android:id="@+id/ball"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/basketball"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="140dp"
+            android:elevation="5dp"/>
+
+        <!-- 游戏标题 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="篮球投篮小游戏"
+            android:textSize="28sp"
+            android:textColor="#0277BD"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:elevation="2dp"/>
+
+        <!-- 重新开始按钮 -->
+        <Button
+            android:id="@+id/restartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重新开始"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="80dp"
+            android:backgroundTint="#00796B"
+            android:textColor="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="10dp"/>
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

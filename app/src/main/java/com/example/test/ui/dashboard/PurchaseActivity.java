@@ -32,6 +32,8 @@ public class PurchaseActivity extends AppCompatActivity {
     private ImageButton sub;
     private Button bt;
     private int num;
+    int sneakername;
+    int price;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -51,8 +53,8 @@ public class PurchaseActivity extends AppCompatActivity {
         bt = findViewById(R.id.pay);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        int sneakername = (int) bundle.get("sneakername");
-        int price = (int) bundle.get("price");
+        sneakername = (int) bundle.get("sneakername");
+        price = (int) bundle.get("price");
         int lookingurl = (int) bundle.get("lookingurl");
         int unit_price = Integer.parseInt(getString(price).split("¥")[1]);
         bt.setText("立即支付¥"+unit_price);
@@ -85,10 +87,10 @@ public class PurchaseActivity extends AppCompatActivity {
         String address = String.valueOf(inputaddr.getText());
         int selectedId = radioGroup.getCheckedRadioButtonId();
         if (selectedId != -1) {
-            RadioButton selectedRadioButton = findViewById(selectedId);
-            String selectedText = selectedRadioButton.getText().toString();
-            Toast.makeText(PurchaseActivity.this,"已完成支付",Toast.LENGTH_SHORT).show();
-            finish();
+            Intent payment = new Intent(this,payment.class);
+            payment.putExtra("sneakername",sneakername);
+            payment.putExtra("price",price);
+            startActivity(payment);
         } else {
             Toast.makeText(PurchaseActivity.this,"请选择支付方式！",Toast.LENGTH_SHORT).show();
         }
